@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación Producto</title>
+</head>
+<body>
+    <h3>Crear Producto</h3>
+    <br>
+    <br>
+    <form
+        action="#"
+        method="post"
+        th:action="@{/productos/create}"
+        th:object="${emptyProducto}"
+        >
+        </br>
+        <input id="id" type="text" th:field="*{product_id}" style="display: none;">
+        <br>
+        <div>
+            <label for="name">Nombre del Producto</label>
+            </br>
+            <input id="name" type="text" th:field="*{product_name}">
+        </div>
+        </br></br>
+        <div>
+            <label for="price">Precio del Producto</label>
+            </br>
+            <input id="price" type="tel" th:field="*{product_price}">
+        </div>
+        </br></br>
+        <div>
+            <label for="photo">Foto del Producto</label>
+            </br>
+            <input id="photo" type="file" th:field="*{product_picture}">
+        </div>
+        </br></br>
+        <div>
+            <label for="stock">Stock del Producto</label>
+            </br>
+            <input id="stock" type="tel" th:field="*{product_stock}">
+        </div>
+        </br></br>
+        <div>
+            <label for="ubi1">Municipio del Producto</label>
+            </br>
+            <input id="ubi1" type="text" th:field="*{id_municipio}">
+        </div>
+        </br></br>
+        <input type="submit" value="Crear Producto">
+    </form>
+    <br>
+
+    <a href="/productos/list">Volver al Listado</a>
+</body>
+</html>

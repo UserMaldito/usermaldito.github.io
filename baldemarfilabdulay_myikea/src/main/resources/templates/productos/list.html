@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <title>Listado Producto</title>
+</head>
+<body>
+    <h3>Listado Producto</h3>
+    <a href="/productos/create">Crear(Subir) Nuevo Producto</a>
+    <div class="table-responsive">
+        <table class="table table-primary">
+            <caption>Tabla de Productos</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Municipio</th>
+                    <th scope="col">Provincia</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="listado:${productoList}">
+                    <td th:text="${listado.product_id}"></td>
+                    <td th:text="${listado.product_name}"></td>
+                    <td th:text="${listado.product_price}"></td>
+                    <td th:text="${listado.municipio.nombre}"></td>
+                    <td th:text="${listado.municipio.provincia.nombre}"></td>
+                    <td th:text="${listado.product_stock}"></td>
+                    <td>
+                        <img th:src="'/Imagenes/' + ${listado.product_picture}" alt="">
+                    </td>
+                    <td>
+                        <a th:href="'/productos/single/' + ${listado.product_id}">Detalles</a>
+                        <a th:href="'/productos/update/' + ${listado.product_id}">Editar</a>
+                        <a th:href="'/productos/delete/' + ${listado.product_id}">Borrar</a>
+                        <!-- <a th:href="'/Carrito/Add/' + ${listado.product_id}">Comprar</a> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <a href="/">Página Principal</a>
+</body>
+</html>

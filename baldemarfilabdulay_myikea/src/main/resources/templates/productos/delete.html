@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrar Animales</title>
+</head>
+<body>
+    <h3>¿Eliminar Animal?</h3>
+    <ul>
+        <li>
+            ID: <span th:text="${productoSingle.product_id}"></span>
+        </li>
+        <li>
+            Nombre: <span th:text="${productoSingle.product_name}"></span>
+        </li>
+        <li>
+            Precio: <span th:text="${productoSingle.product_price}"></span>
+        </li>
+        <li>
+            Stock: <span th:text="${productoSingle.product_stock}"></span>
+        </li>
+        <li>
+            Municipio: <td th:text="${listado.municipio.nombre}"></td>
+        </li>
+        <li>
+            Provincia: <td th:text="${listado.municipio.provincia.nombre}"></td>
+        </li>
+        <li>
+            Imagen: 
+            <br>
+            <img th:src="'/Imagenes/' + ${productoSingle.product_picture}" alt="Foto Producto">
+        </li>
+    </ul>
+    <form
+        action="#"
+        method="post"
+        th:action="@{/productos/delete}"
+        th:object="${productoDelete}"
+        >
+        <input id="id" type="text" th:field="*{product_id}" style="display: none;">
+        <input type="submit" value="Confirmar Borrado" />
+    </form>
+    <a href="/productos/list">Volver al Listado</a>
+</body>
+</html>
